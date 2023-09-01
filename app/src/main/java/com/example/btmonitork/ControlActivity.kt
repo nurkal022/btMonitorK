@@ -1,5 +1,7 @@
 package com.example.btmonitork
 
+import android.bluetooth.BluetoothManager
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -14,12 +16,23 @@ import com.example.btmonitork.databinding.ActivityControlBinding
 class ControlActivity : AppCompatActivity() {
     private lateinit var binding: ActivityControlBinding
     private lateinit var actListLauncher: ActivityResultLauncher<Intent>
-
+    lateinit var btConnection: BtConnection
+    private var listItem:ListItem?=null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityControlBinding.inflate(layoutInflater)
         setContentView(binding.root)
         onBtListResult()
+        init()
+    }
+
+
+    private fun init(){
+        val btManager = getSystemService(Context.BLUETOOTH_SERVICE) as BluetoothManager
+        val btAdapter = btManager.adapter
+
+        btConnection= BtConnection(btAdapter,this)
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -31,7 +44,9 @@ class ControlActivity : AppCompatActivity() {
         if(item.itemId == R.id.id_list){
             actListLauncher.launch(Intent(this, BtListActivity::class.java))
         } else if(item.itemId == R.id.id_connect){
-
+            listItem.let {
+                btConnection.connect(it?.mac!!)
+            }
         }
         return super.onOptionsItemSelected(item)
     }
@@ -41,7 +56,7 @@ class ControlActivity : AppCompatActivity() {
             ActivityResultContracts.StartActivityForResult()){
             if(it.resultCode == RESULT_OK){
 //                Log.d("MyLog","Name: ${(it.data?.getStringExtra(BtListActivity.DEVICE_KEY) as ListItem).name}")
-                Log.d("MyLog","Name: ${(it.data?.getSerializableExtra(BtListActivity.DEVICE_KEY) as ListItem).name}")
+                listItem=it.data?.getSerializableExtra(BtListActivity.DEVICE_KEY) as ListItem
             }
         }
     }
