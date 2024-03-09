@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Вопрос и Ответ</title>
+    <style>
+.faq-item {
+  margin-bottom: 20px;
+  border: 2px solid #007BFF;
+  border-radius: 5px;
+}
+
+.faq-question {
+  padding: 10px;
+  background-color: #007BFF;
+  color: white;
+  cursor: pointer;
+}
+
+.faq-answer {
+  display: none;
+  padding: 10px;
+  background-color: #E9ECEF;
+}
+
+.faq-question:hover {
+  background-color: #0056b3;
+}
+</style>
+</head>
+<body>
+
+<div class="faq-item">
+    <div class="faq-question">Ваш вопрос здесь</div>
+    <div class="faq-answer">Ответ скрыт до клика</div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  var faqQuestions = document.querySelectorAll('.faq-question');
+
+  faqQuestions.forEach(function(question) {
+    question.addEventListener('click', function() {
+      var answer = this.nextElementSibling;
+      answer.style.display = answer.style.display === 'block' ? 'none' : 'block';
+    });
+  });
+});
+</script>
+</body>
+</html>

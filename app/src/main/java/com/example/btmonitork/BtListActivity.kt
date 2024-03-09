@@ -1,5 +1,7 @@
 package com.example.btmonitork
 
+import android.Manifest
+import android.app.Activity
 import android.bluetooth.BluetoothAdapter
 import android.bluetooth.BluetoothDevice
 import android.bluetooth.BluetoothManager
@@ -9,6 +11,9 @@ import android.content.pm.PackageManager
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.btmonitork.databinding.ActivityMainBinding
 
@@ -33,17 +38,20 @@ class BtListActivity : AppCompatActivity(),RcAdapter.Listener {
     }
 
     private fun  getPairedDevises(){
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            if (checkSelfPermission(android.Manifest.permission.BLUETOOTH_CONNECT) != PackageManager.PERMISSION_GRANTED) {
-                requestPermissions(arrayOf(android.Manifest.permission.BLUETOOTH_CONNECT),1)
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.BLUETOOTH_CONNECT) == PackageManager.PERMISSION_DENIED)
+        {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S)
+            {
+                ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.BLUETOOTH_CONNECT), 2)
+                return
             }
         }
+
         val pairedDevices:Set<BluetoothDevice>?=btAdapter?.bondedDevices
         val tempList=ArrayList<ListItem>()
         pairedDevices?.forEach{
             tempList.add(ListItem(it.name,it.address))
-
-//            Log.d("MyLog","Name:${it.name}")
+          // Log.d("MyLog","Name:${it.name}")
         }
         adapter.submitList(tempList)
     }

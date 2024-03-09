@@ -13,7 +13,6 @@ class RcAdapter(private val listener:Listener) : ListAdapter<ListItem, RcAdapter
 
     class ItemHolder(view: View) : RecyclerView.ViewHolder(view){
         val binding = ListItemBinding.bind(view)
-
         fun setData(item: ListItem, listener:Listener) = with(binding){
             tvName.text = item.name
             tvMac.text = item.mac
@@ -21,6 +20,7 @@ class RcAdapter(private val listener:Listener) : ListAdapter<ListItem, RcAdapter
                 listener.OnClick(item)
             }
         }
+
         companion object{
             fun create(parent: ViewGroup): ItemHolder{
                 return ItemHolder(

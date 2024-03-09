@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DocActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/ivProfile"
+            android:layout_width="138dp"
+            android:layout_height="139dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/lofo" />
+
+        <TextView
+            android:id="@+id/tvProfileName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:text="Аты-жөні"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ivProfile" />
+
+        <EditText
+            android:id="@+id/fN"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="Аты-жөні"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/tvProfileName"
+            app:layout_constraintTop_toBottomOf="@+id/tvProfileName" />
+
+        <TextView
+            android:id="@+id/tvFI"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="ИИН"
+            app:layout_constraintStart_toStartOf="@+id/fN"
+            app:layout_constraintTop_toBottomOf="@+id/fN" />
+
+        <EditText
+            android:id="@+id/fI"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="ИИН"
+            android:textSize="20sp"
+
+            app:layout_constraintStart_toStartOf="@+id/tvFI"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvFI" />
+
+        <TextView
+            android:id="@+id/tvFB"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Қан тобы"
+            app:layout_constraintStart_toStartOf="@+id/fI"
+            app:layout_constraintTop_toBottomOf="@+id/fI" />
+
+        <EditText
+            android:id="@+id/fB"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="Қан тобы"
+            android:textSize="20sp"
+
+            app:layout_constraintStart_toStartOf="@+id/tvFB"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvFB" />
+
+        <TextView
+            android:id="@+id/tvFH"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Бойы"
+            app:layout_constraintStart_toStartOf="@+id/fB"
+            app:layout_constraintTop_toBottomOf="@+id/fB" />
+
+        <EditText
+            android:id="@+id/fH"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="Бойы"
+            android:textSize="20sp"
+
+            app:layout_constraintStart_toStartOf="@+id/tvFH"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvFH" />
+
+        <TextView
+            android:id="@+id/tvFW"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Салмағы"
+            app:layout_constraintStart_toStartOf="@+id/fH"
+            app:layout_constraintTop_toBottomOf="@+id/fH" />
+
+        <EditText
+            android:id="@+id/fW"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="Салмағы"
+            android:textSize="20sp"
+
+            app:layout_constraintStart_toStartOf="@+id/tvFW"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvFW" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

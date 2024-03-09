@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".QuestionActivity">
+
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Сұрақ-жауап"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="60dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- Вопрос 1 -->
+            <TextView
+                android:id="@+id/question1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#0056b3"
+                android:clickable="true"
+                android:focusable="true"
+                android:padding="16dp"
+                android:text="1: Жүрек-қан тамырлары аурулары дегеніміз не?"
+                android:textColor="#FFFFFF" />
+
+            <TextView
+                android:id="@+id/answer1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#e9ecef"
+                android:padding="8dp"
+                android:text="Жүрек-қан тамырлары аурулары жүрек пен қан
+            тамырларын әсер ететін аурулардың жиынтығын қамтиды, мысалы, ишемиялық жүрек ауруы, гипертония, инсульт,
+            жүрек жеткіліксіздігі және атеросклероз. Олар генетика, денсаулыққа зиянды өмір салты және нашар тамақтану
+            сияқты түрлі факторлардан туындауы мүмкін. Біздің қосымшамыз сіздің денсаулығыңызды бақылауға және жүрек-қан
+            тамырлары жүйесінің жағдайын жақсартуға арналған кеңестерді ұсынады."
+                android:visibility="gone" />
+
+            <!-- Вопрос 2 -->
+            <TextView
+                android:id="@+id/question2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#0056b3"
+                android:clickable="true"
+                android:focusable="true"
+                android:padding="16dp"
+                android:text="2: Қосымшаны қалай пайдаланып, жүрегімнің денсаулығын жақсарта аламын?"
+                android:textColor="#FFFFFF" />
+
+            <TextView
+                android:id="@+id/answer2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#e9ecef"
+                android:padding="8dp"
+                android:text="Біздің қосымшамыз физикалық белсенділікті бақылау,
+            тамақтануды қадағалау, стресс басқару және ұйқы туралы ұсыныстар сияқты әртүрлі функцияларды ұсынады. Жеке
+            мақсаттар қоя аласыз, өз прогрессіңізді бақылай аласыз және денсаулығыңыз және әдеттеріңізге негізделген
+            жекелендірілген кеңестер ала аласыз. Бұл сізге денсаулықты жақсарту және ЖҚТА қаупін төмендету үшін
+            денсаулыққа пайдалы өмір салтын ұстануға көмектеседі."
+                android:visibility="gone" />
+
+            <!-- Вопрос 3 -->
+            <TextView
+                android:id="@+id/question3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#0056b3"
+                android:clickable="true"
+                android:focusable="true"
+                android:padding="16dp"
+                android:text="3: Бұл қосымша менің қан қысымымды бақылауда ұстауға көмектесе ала ма?"
+                android:textColor="#FFFFFF" />
+
+            <TextView
+                android:id="@+id/answer3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#e9ecef"
+                android:padding="8dp"
+                android:text="Иә, біздің қосымшамыз сізге қан қысымының
+            көрсеткіштерін тұрақты түрде жазып отыруға мүмкіндік береді, сондықтан уақыт өте келе өзгерістерді бақылай
+            аласыз. Сіз қан қысымын өлшеу қажеттілігі туралы ескертпелер ала аласыз және трендтер талдауын көре аласыз,
+            бұл сіз бен дәрігеріңізге жағдайды жақсы басқаруға көмектеседі."
+                android:visibility="gone" />
+
+
+
+
+            <!-- Вопрос 4 -->
+            <TextView
+                android:id="@+id/question4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#0056b3"
+                android:clickable="true"
+                android:focusable="true"
+                android:padding="16dp"
+                android:text="4: Қосымша мені стресс басқаруда қалай көмектесе алады?"
+                android:textColor="#FFFFFF" />
+
+            <TextView
+                android:id="@+id/answer4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#e9ecef"
+                android:padding="8dp"
+                android:text=" Стресс жүрек денсаулығына зиянды әсер етуі мүмкін. Біздің
+            қосымшамыз медитация, тыныс алу жаттығулары және релаксация техникалары сияқты стресс басқару функцияларын
+            ұсынады. Эмоционалды жағдайыңызды бақылап, ұсынылған жаттығуларды орындау арқылы стресс деңгейіңізді және
+            оның денсаулығыңызға әсерін азайта аласыз."
+                android:visibility="gone" />
+
+
+            <!-- Вопрос 5 -->
+            <TextView
+                android:id="@+id/question5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#0056b3"
+                android:clickable="true"
+                android:focusable="true"
+                android:padding="16dp"
+                android:text="5: Денсаулық туралы деректерімді дәрігеріммен қосымша арқылы бөлісе аламын ба?"
+                android:textColor="#FFFFFF" />
+
+            <TextView
+                android:id="@+id/answer5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#e9ecef"
+                android:padding="8dp"
+                android:text="Иә, біздің қосымшамыз денсаулық және прогресс туралы есептерді дәрігеріңізбен бөлісу мүмкіндігін ұсынады. Физикалық белсенділік, тамақтану, стресс деңгейі және қан қысымы көрсеткіштері туралы деректерді тікелей қосымшадан жібере аласыз, бұл сіздің дәрігеріңізге сіздің денсаулығыңыз туралы толық көрініс береді және ең тиімді кеңестер ұсына алады."
+                android:visibility="gone" />
+        </LinearLayout>
+    </ScrollView>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
