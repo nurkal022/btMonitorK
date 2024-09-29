@@ -37,6 +37,9 @@ class ControlActivity : AppCompatActivity(),ReceiveThread.Listener {
     val dataSet = LineDataSet(ArrayList<Entry>(), "Real-Time Data")
     lateinit var lineChart: LineChart
 
+    private var messageBuffer = ""
+    private var isCollectingNumber = false
+    private var currentNumber = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -159,20 +162,79 @@ class ControlActivity : AppCompatActivity(),ReceiveThread.Listener {
     }
 
     override fun onRecevie(message: String) {
-        runOnUiThread{
-            Log.d("MyLog:","Conecteeethihj")
+        runOnUiThread {
+            Log.d("MyLog:", "Received data: $message")
 
-            var h=message
-            if(h.startsWith("***")){
-                h=h.removeRange(0,3)
-                h=h.drop(h.length-1)
-                Log.v("MyLog:h",h)
-               addNewDataToChart(h.toFloat()*10)
+            // Проверка на конкретные системные сообщения
+            if (message.contains("Connected HC_WORK") || message.contains("Connecting...")) {
+                processSystemMessage(message)
+                return@runOnUiThread
             }
 
-           binding.tvMessage.text=(h.toFloat()*10).toString()
-            //Log.v("MyLog:","arrived Mes="+h)
-            //
+            messageBuffer += message
+
+            while (messageBuffer.isNotEmpty()) {
+                when {
+                    messageBuffer.startsWith("***") -> {
+                        if (isCollectingNumber) {
+                            processNumber(currentNumber)
+                            isCollectingNumber = false
+                            currentNumber = ""
+                        }
+                        messageBuffer = messageBuffer.substring(3)
+                        isCollectingNumber = true
+                    }
+                    isCollectingNumber -> {
+                        val numberEnd = messageBuffer.indexOfFirst { !it.isDigit() && it != '.' }
+                        if (numberEnd == -1) {
+                            currentNumber += messageBuffer
+                            messageBuffer = ""
+                        } else {
+                            currentNumber += messageBuffer.substring(0, numberEnd)
+                            processNumber(currentNumber)
+                            isCollectingNumber = false
+                            currentNumber = ""
+                            messageBuffer = messageBuffer.substring(numberEnd)
+                        }
+                    }
+                    else -> {
+                        val nextStart = messageBuffer.indexOf("***")
+                        if (nextStart == -1) {
+                            // Проверяем, не содержит ли оставшийся буфер важные системные сообщения
+                            if (messageBuffer.contains("Connected HC_WORK") || messageBuffer.contains("Connecting...")) {
+                                processSystemMessage(messageBuffer)
+                            }
+                            messageBuffer = ""
+                        } else {
+                            messageBuffer = messageBuffer.substring(nextStart)
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    private fun processNumber(number: String) {
+        Log.v("MyLog:", "Processing number: $number")
+        try {
+            val value = number.toFloatOrNull()
+            if (value != null) {
+                addNewDataToChart(value)
+                binding.tvMessage.text = value.toString()
+            } else {
+                Log.e("MyLog:", "Invalid number format: $number")
+            }
+        } catch (e: Exception) {
+            Log.e("MyLog:", "Error processing number", e)
+        }
+    }
+
+    private fun processSystemMessage(message: String) {
+        Log.v("MyLog:", "Processing system message: $message")
+        when {
+            message.contains("Connected HC_WORK") -> binding.tvMessage.text = "Connected HC_WORK"
+            message.contains("Connecting...") -> binding.tvMessage.text = "Connecting..."
+            else -> Log.d("MyLog:", "Unhandled system message: $message")
         }
     }
 

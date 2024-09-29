@@ -21,16 +21,10 @@ class MainActivity5 : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main5)
         bStudent = findViewById(R.id.bStudent)
-        bUniver = findViewById(R.id.bUniver)
         bHealth = findViewById(R.id.bHealth)
         bDrag = findViewById(R.id.bDrag)
         bQ = findViewById(R.id.bQ)
 
-        bUniver.setOnClickListener {
-            val intent = Intent(it.context,UniverActivity::class.java)
-            //intent.putExtra("key", "value")
-            startActivity(intent)
-        }
 
 
         bQ.setOnClickListener {

@@ -45,16 +45,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
-        <Button
-            android:id="@+id/bUniver"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:drawableLeft="@drawable/charity_971578"
-            android:paddingLeft="30px"
-            android:paddingRight="30px"
-            android:text="Университет медициналық бөлімі" />
-
         <Space
             android:layout_width="50px"
             android:layout_height="wrap_content" />
@@ -67,7 +57,7 @@
             android:drawableLeft="@drawable/hospital_971580"
             android:paddingLeft="30px"
             android:paddingRight="30px"
-            android:text="Студент құжаттары" />
+            android:text="Пайдаланушы деректері" />
 
     </LinearLayout>
 
